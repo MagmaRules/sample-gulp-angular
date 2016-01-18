@@ -1,0 +1,70 @@
+<!doctype html>
+<html ng-app="searchApp">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Test</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <!-- bower:css -->
+    <!-- endbower -->
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body ng-controller="SearchCtrl">
+    <div id="container" class="container" class="ng-cloak">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li><a href="#">Home</a></li>
+                    <li class="active"><a href="#">Search</a></li>
+                    <li>
+                        <button class="btn btn-danger btn-sm" type="button" ng-click="showError()">
+                            Press to break
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Angular Search</h3>
+        </div>
+        <div class="jumbotron">
+            <div id="custom-search-input">
+                <form id="search-form" ng-submit="search(query)">
+                    <div class="input-group col-md-12">
+                        <input ng-model="query" type="text" class="form-control input-lg" placeholder="Search Ancients" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary btn-lg" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="results" ng-cloak>
+            <ul ng-show="results.length > 0 && !specialError" ng-class="{'loading-data': loading}">
+                <li ng-repeat="result in results">
+                    <h4 class='title'>{{result.name}}</h4>
+                    <h5 class='era text-muted'>{{result.endOfAnEra}}</h5>
+                    <p>{{result.superpower}}</p>
+                </li>
+            </ul>
+            <div class="spinner" ng-show="loading">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+            <div class="alert alert-danger" role="alert" ng-show="specialError">
+                {{specialError}}
+            </div>
+            <div class="alert alert-info" role="alert" ng-show="results.length == 0 && !loading">
+                No results found
+            </div>
+        </div>
+    </div>
+    <!-- bower:js -->
+    <!-- endbower -->
+    <script src="scripts/main.js"></script>
+</body>
+</html>

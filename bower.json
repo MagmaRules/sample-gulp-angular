@@ -1,0 +1,20 @@
+{
+  "name": "angularjs",
+  "description": "Test project for angularjs",
+  "directory": "app/bower_components",
+  "authors": [
+    "Miguel Coxo"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "bootstrap": "~3.3.5"
+  }
+}
